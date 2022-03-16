@@ -98,6 +98,21 @@ export default new VueRouter({
                         },
                     ]
                 },
+
+                // newfunctions
+                {
+                    path: 'newfunctions',
+                    component: ()=>import('@/page/newfunctions/newfunction'),
+                    redirect:'/newfunctions/map',
+                    children:[
+                        {
+                            path:'map',
+                            component:()=>import('@/page/newfunctions/mapview/map')
+                        },
+                    ]
+                },
+
+
                 {
                     path: 'user',
                     component: ()=>import('@/components/users/profile')

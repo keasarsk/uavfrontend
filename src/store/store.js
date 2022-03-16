@@ -3,6 +3,8 @@ import vuex from "vuex"
 
 Vue.use(vuex)
 
+
+import uavInfo from './uavInfo.js'
 export default new vuex.Store({
     state:{
     //    leaflet
@@ -103,6 +105,10 @@ export default new vuex.Store({
         getMap(state){
             return state.mapbox;
         }
+    },
+    // uav的信息
+    modules:{
+        uavInfo:uavInfo
     }
 })
 
