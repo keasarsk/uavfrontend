@@ -67,6 +67,8 @@
         <!-- <el-button type="primary" size="medium" @click="arm(num)">手柄切换</el-button> -->
         <el-button type="primary" size="medium" @click="camerashow">相机记录</el-button>
         <el-button type="primary" size="medium" @click="logFileall(num)">日志文档</el-button>
+        <el-button type="primary" size="medium" @click="setmission(num)">任务测试</el-button>
+
         <el-button type="primary" size="medium" >{{number}}</el-button>
 
       </el-card>
@@ -126,6 +128,7 @@ export default {
     ...mapMutations('uavInfo',[
       'armall',
       'arm',
+      'setmission',
       'takeoffall',
       'landall',
       'returnToLaunchall',

@@ -160,6 +160,26 @@ export default {
 
         },
 
+        // missiontest
+        setmission(state,value){
+            console.log('setmission被用了')
+            // console.log("value:"+value)
+            state.num = value
+            console.log("valstate.num:"+state.num)
+
+            request({
+                // 用的missiontest
+                url: '/missiontest',
+            })
+            .then(res => {
+            console.log(res);
+            })
+            .catch(err => {
+            console.log(err);
+            })
+        },
+
+
         // 键盘控制 单个
         // 这个需要把本地键盘点击事件发送过去
         keyboardControl(state,value){
