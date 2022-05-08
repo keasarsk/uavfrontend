@@ -3,6 +3,10 @@ import ElementUI, {Message,Notification} from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import router from './router'
 
+// dataV
+// import dataV from '@jiaminghi/data-view'
+// Vue.use(dataV);
+
 //导入全局样式表
 import './assets/style/global.css'
 import App from "@/App";
@@ -17,6 +21,10 @@ Vue.prototype.$http=axios;
 //访问地址
 // axios.defaults.baseURL='http://49.233.56.74:9080/'
 axios.defaults.baseURL='http://localhost:8085'
+
+// 
+import echarts from 'echarts'
+Vue.prototype.$echarts=echarts//如果报错可以使用
 
 
 //导入qs文件

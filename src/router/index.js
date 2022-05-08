@@ -112,6 +112,19 @@ export default new VueRouter({
                     ]
                 },
 
+                // uavinfromationdisplay
+                {
+                    path: 'uavinfodisplay',
+                    component: ()=>import('@/page/uavinfodisplay/uavinfodisplay'),
+                    redirect:'/uavinfodisplay/map',
+                    children:[
+                        {
+                            path:'map',
+                            component:()=>import('@/page/uavinfodisplay/mapview/map')
+                        },
+                    ]
+                },
+
 
                 {
                     path: 'user',

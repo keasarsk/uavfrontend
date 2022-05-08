@@ -332,6 +332,27 @@ export default {
             }  
 
         },
+
+
+        // 4.23 大无人机任务
+        // 未完成编写
+        bigmission(state,value){
+            console.log('大无人机任务');
+            state.number = value
+            // 循环调用api发送任务
+            var len = state.number.length-1
+            for(len;len>=0;len--){
+                request({
+                    url: '/'+len+'/bigmission',
+                })
+                .then(res => {
+                console.log(res);
+                })
+                .catch(err => {
+                console.log(err);
+                })
+            }  
+        }
         
       
     },

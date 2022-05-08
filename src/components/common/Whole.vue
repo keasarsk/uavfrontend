@@ -69,6 +69,8 @@ export default {
         {index:'Home',title:'首页'},
         {index:'multiuav',title:'多无人机路径规划'},
         {index:'communityserve',title:'社区服务'},
+        {index:'uavinfodisplay',title:'UAV信息展示'},
+
 
         {index:'newfunctions',title:'新功能'},
 
