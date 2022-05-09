@@ -9,19 +9,19 @@
     <!-- <hr>
     经度,,纬度 -->
     <div class="rectangle">
-      经度{{lat}}
+      经度 {{lat}}
     </div>
     <div class="rectangle">
-      纬度{{lon}}
+      纬度 {{lon}}
     </div>
     <!-- <hr>
     高度 -->
      <div class="rectangle">
-      高度{{high}}
+      高度 {{high}}
     </div>
     <!-- <hr> -->
     <div class="rectangle">
-      状态  {{}}
+      状态  {{state}}
     </div>
     <!-- 状态 -->
     <!-- <hr> -->
@@ -61,7 +61,7 @@ export default {
       lat: '',
       lon: 0,
       high: 0,
-      state,
+      state: 'arming',
       // battery: 0,
       // speed: 0,
       size: {
@@ -78,7 +78,7 @@ export default {
         // height: '50%'
       },
       config: {
-        value: 66,
+        value: 100,
         localGradient: true
       },
       options: {
@@ -133,7 +133,7 @@ export default {
               },
               data: [
                   {
-                  value: 70
+                  value: 90
                   }
               ]
             }
@@ -159,6 +159,7 @@ export default {
     initWebSocket(){ //初始化weosocket
       const wsuri = "ws://127.0.0.1:8000/1/wstest";
       this.websock = new WebSocket(wsuri);
+
       this.websock.onmessage = this.websocketonmessage;
       // this.websock.onopen = this.websocketonopen;
       this.websock.onerror = this.websocketonerror;
@@ -173,17 +174,22 @@ export default {
     },
     websocketonmessage(e){ //数据接收
       const redata = JSON.parse(e.data);
-      console.log(typeof(redata));//object
-      console.log(redata.battery);//可以
       // 电池
-      this.config.value = redata.battery
+      this.config.value = parseInt(redata["bat"].remaining_percent*100)
+      console.log("this.config.value",this.config.value);
+      this.config = { ...this.config}
+
       // 飞速
-      this.options.series[0].data[0].value = redata.speed
+      this.options.series[0].data[0].value = parseInt(redata["bat"].remaining_percent*100)
+      
+      // setInterval(()=>{
+      this.options = { ...this.options }
+      // },2000)
       // lat
-      this.lat = redata.lat
-      this.lon = redata.lon
-      this.height = redata.high
-      this.state = redata.state
+      this.lat = redata["pos"].latitude_deg
+      this.lon = redata["pos"].longitude_deg
+      this.height = redata["pos"].relative_altitude_m
+      // this.state = redata["bat"].state
     },
     // websocketsend(Data){//数据发送
     //   this.websock.send(Data);
@@ -193,6 +199,12 @@ export default {
     },
 
   },
+  //   watch: {
+  //   // 监听options改变，重新生成图表
+  //   options: function () {
+  //     this.myChart.setOption(this.options)
+  //   }
+  // }
 }
 </script>
 

@@ -6,18 +6,18 @@
     <!-- <el-row> -->
 
     <div class="two">
-      <el-button type="primary" class="rectangle">起飞</el-button>
+      <el-button type="primary" class="rectangle" @click="takeoffall(num)">起飞</el-button>
       <!-- <el-button type="primary" round>主要按钮</el-button> -->
       <el-button type="primary" class="rectangle">降落</el-button>
       <!-- <el-button type="primary">主要按钮</el-button> -->
     </div>
     <div class="two">
       <el-button type="primary" class="rectangle">悬停</el-button>
-      <el-button type="primary" class="rectangle">返航</el-button>
+      <el-button type="primary" class="rectangle" @click="returnToLaunchall(num)">返航</el-button>
     </div>
 
     <div class="three"> 
-      <el-button type="primary" class="rectanglelong">任务布置</el-button>
+      <el-button type="primary" class="rectanglelong" @click="setmission(num)">任务布置</el-button>
 
     </div>
     <div class="three">
@@ -34,7 +34,6 @@
     <!-- <e-charts :size="size" :options="options" /> -->
     <!-- <div class="rectangle">
       
-
     </div> -->
     <div class="dragRectBottom"></div>
   </div>
@@ -50,90 +49,47 @@ export default {
   },
   data: function () {
     return {
-      year: 2000,
-      options: {
-        title: {
-          text: '2000uav控制',
-          textStyle: {
-            color: "rgba(255,255,255,0.9)"
-          },
-          left: "center",
-          top: "5px"
-        },
-        tooltip: {
-          trigger: 'axis',
-          axisPointer: {
-            type: 'shadow'
-          }
-        },
-        grid: {
-          top: '20%',
-          left: '10%',
-          right: '10%',
-          bottom: '4%',
-          containLabel: true
-        },
-        xAxis: [
-          {
-            type: 'category',
-            data: ['旅游', '教育', '医疗', '游戏', '电商', '社交', '金融'],
-            axisTick: {
-              alignWithLabel: true
-            },
-            axisLabel: {
-              textStyle: {
-                color: "rgba(255,255,255,0.6)",
-                fontSize: "12"
-              }
-            }
-          }
-        ],
-        yAxis: [
-          {
-            type: 'value',
-            axisLabel: {
-              textStyle: {
-                color: "rgba(255,255,255,0.6)",
-                fontSize: "12"
-              }
-            },
-            axisLine: {
-              lineStyle: {
-                color: "rgba(255,255,255,0.3)"
-              }
-            },
-            splitLine: {
-              lineStyle: {
-                color: "rgba(255,255,255,0.3)"
-              }
-            }
-          }
-        ],
-        series: [
-          {
-            name: 'Direct',
-            type: 'bar',
-            barWidth: '35%',
-            data: [200, 250, 330, 334, 820, 520, 720],
-            itemStyle: {
-              barBorderRadius: 5
-            }
-          }
-        ]
-      },
+      num: [1,2,3,4],
       size: {
         width: '100%',
         height: '5rem'
       }
     }
   },
+  computed:{
+    // 获取store/uavInfo中存储的state
+    ...mapState('uavInfo',['number',
+      'condition',
+      'location',
+      'height',
+      'mission',
+      'action',
+      'camera'
+    ])
+
+  },
+  methods:{
+    // 获取store/uavInfo中存储的actions
+    ...mapActions('uavInfo',[
+      'followme',
+    ]),
+    // 获取store/uavInfo中存储的mutations
+    ...mapMutations('uavInfo',[
+      'armall',
+      'arm',
+      'setmission',
+      'takeoffall',
+      'landall',
+      'returnToLaunchall',
+      'keyboardControl',//
+      'logFileall',//
+      'camerapictures',//
+      'holdall',
+    ]),
+  },
   mounted () {
     setInterval(() => {
-      this.year++;
-      this.options.title.text = `${this.year}uav控制`
-      this.options.series[0].data.forEach((item, i) => {
-        this.options.series[0].data[i] = item + Math.floor(Math.random() * 100) - 50
-      })
+
       this.options = { ...this.options }
     }, 2000)
   }

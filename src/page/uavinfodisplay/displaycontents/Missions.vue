@@ -1,23 +1,7 @@
 <template>
   <div id="pie" :style="size">
     <div class="dragRectTop"></div>
-    <!-- <e-charts :size="size" :options="options" /> -->
 
-    <!-- <div id="centerRight1">
-      <div class="bg-color-black">
-
-        <div class="d-flex pt-2 pl-2">
-          
-            <span>任务完成排u 行榜</span>
-          
-        </div>
-        <div class="body-box">
-
-          <dv-scroll-board class="dv-scr-board" :config="config" />
-          
-        </div>
-      </div>
-    </div> -->
     任务列表
     <div >
       <dv-scroll-board class="scroll" :config="config" />
