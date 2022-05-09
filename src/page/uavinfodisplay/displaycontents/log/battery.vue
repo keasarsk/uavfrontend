@@ -2,7 +2,7 @@
   <div>
     电池
     <!-- <e-charts :size="size" :options="options" /> -->
-    <dv-percent-pond :config="config" style="width:120px;height:60px;" />
+    <dv-percent-pond :style="size" :config="config" />
   </div>
 </template>
 
@@ -20,6 +20,11 @@ export default {
         value: 66,
         localGradient: true
       },
+      size: {
+        width: '100%',
+        // height: '3.875rem'
+        height: '2rem'
+      }
       
     }
   },

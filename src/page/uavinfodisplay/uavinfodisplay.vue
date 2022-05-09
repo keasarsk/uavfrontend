@@ -6,10 +6,9 @@
 
       <div class="left">
         <!-- 左上摄像头 -->
-        <bar></bar>
-        <!-- <broken-line></broken-line> -->
+        <Camera></Camera>
         <!-- 左下日志 -->
-        <pie></pie>
+        <Logs></Logs>
       </div>
 
       <div class="mid">
@@ -19,13 +18,12 @@
       </div>
 
       <div class="right">
-        <!-- <ver-bar></ver-bar> -->
-        <!-- <broken-line2></broken-line2>
-        <pie2></pie2> -->
 
-        <barleft></barleft>
+        <!-- 右上控制 -->
+        <Controll></Controll>
         <!-- <broken-line></broken-line> -->
-        <pieleftme></pieleftme>
+        <!-- 右下任务列表 -->
+        <Missions></Missions>
       </div>
     </div>
   </div>
@@ -33,16 +31,16 @@
 
 <script>
 // import ECharts from '@/components/ECharts'
-import Bar from '@/page/uavinfodisplay/displaycontents/Bar'
+import Camera from '@/page/uavinfodisplay/displaycontents/Camera'
 // import Barleftme from '@/components/Barleft'
 import BrokenLine from '@/page/uavinfodisplay/displaycontents/BrokenLine'
-import Pieleftme from '@/page/uavinfodisplay/displaycontents/Pieleft'
-import Pie from '@/page/uavinfodisplay/displaycontents/Pie'
+import Missions from '@/page/uavinfodisplay/displaycontents/Missions'
+import Logs from '@/page/uavinfodisplay/displaycontents/Logs'
 // import VerBar from '@/components/VerBar'
 // import BrokenLine2 from '@/components/BrokenLine2'
 // import Pie2 from '@/components/Pie2'
 import Map from '@/page/uavinfodisplay/displaycontents/Map'
-import Barleft from '@/page/uavinfodisplay/displaycontents/Barleft.vue'
+import Controll from '@/page/uavinfodisplay/displaycontents/Controll.vue'
 // import Pieleft from './components/Pieleft.vue'
 
 
@@ -56,17 +54,17 @@ export default {
   },
   components: {
     // ECharts,
-    Bar,//
+    Camera,//
     BrokenLine,//
-    Pie,//
+    Logs,//
     // VerBar,
     // BrokenLine2,
     // Pie2,
     Map,//
     // Pieleft,
-    Barleft,//
+    Controll,//
     // Barleftme,
-    Pieleftme//
+    Missions//
   },
   mount() {
     setInterval(() => {
